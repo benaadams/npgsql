@@ -519,6 +519,8 @@ Npgsql.NpgsqlConnectionStringBuilder.SocketReceiveBufferSize.get -> int
 Npgsql.NpgsqlConnectionStringBuilder.SocketReceiveBufferSize.set -> void
 Npgsql.NpgsqlConnectionStringBuilder.SocketSendBufferSize.get -> int
 Npgsql.NpgsqlConnectionStringBuilder.SocketSendBufferSize.set -> void
+Npgsql.NpgsqlConnectionStringBuilder.StringCaching.get -> bool
+Npgsql.NpgsqlConnectionStringBuilder.StringCaching.set -> void
 Npgsql.NpgsqlConnectionStringBuilder.SslMode.get -> Npgsql.SslMode
 Npgsql.NpgsqlConnectionStringBuilder.SslMode.set -> void
 Npgsql.NpgsqlConnectionStringBuilder.TcpKeepAlive.get -> bool
