@@ -115,9 +115,7 @@ namespace Npgsql.TypeHandlers
                     }
                     break;
                 }
-                return buf.UseStringCaching ?
-                    Intern(tempBuf, buf.TextEncoding) :
-                    buf.TextEncoding.GetString(tempBuf);
+                return Intern(tempBuf, buf.TextEncoding);
             }
         }
 

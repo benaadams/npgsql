@@ -28,9 +28,6 @@ namespace Npgsql
 
         internal readonly NpgsqlConnector Connector;
 
-        // Tests can use null connections
-        internal bool UseStringCaching => (Connector?.Connection?.Settings.StringCaching ?? true);
-
         internal Stream Underlying { private get; set; }
 
         readonly Socket? _underlyingSocket;
@@ -439,9 +436,7 @@ namespace Npgsql
         public string ReadString(int byteLen)
         {
             Debug.Assert(byteLen <= ReadBytesLeft);
-            var result = UseStringCaching ?
-                Intern(Buffer.AsSpan(ReadPosition, byteLen), TextEncoding) :
-                TextEncoding.GetString(Buffer, ReadPosition, byteLen);
+            var result = Intern(Buffer.AsSpan(ReadPosition, byteLen), TextEncoding);
 
             ReadPosition += byteLen;
             return result;
@@ -596,9 +591,7 @@ namespace Npgsql
                     buffer.ReadPosition - start - 1 :
                     buffer.ReadPosition - start;
 
-                s = buffer.UseStringCaching ?
-                            Intern(buffer.Buffer.AsSpan(start, length), encoding) :
-                            encoding.GetString(buffer.Buffer, start, length);
+                s = Intern(buffer.Buffer.AsSpan(start, length), encoding);
 
                 return foundTerminator;
             }

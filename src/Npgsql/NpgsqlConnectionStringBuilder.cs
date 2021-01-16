@@ -863,25 +863,6 @@ namespace Npgsql
         }
         int _connectionLifetime;
 
-        /// <summary>
-        /// Whether string value caching should be used.
-        /// </summary>
-        [Category("Pooling")]
-        [Description("Whether string value caching should be used.")]
-        [DisplayName("String caching")]
-        [NpgsqlConnectionStringProperty]
-        [DefaultValue(true)]
-        public bool StringCaching
-        {
-            get => _stringCaching;
-            set
-            {
-                _stringCaching = value;
-                SetValue(nameof(StringCaching), value);
-            }
-        }
-        bool _stringCaching;
-
         #endregion
 
         #region Properties - Timeouts
